@@ -1,11 +1,9 @@
 package com.atguigu.auth.controller;
 
 import com.atguigu.auth.service.SysRoleService;
-import com.atguigu.common.execption.GuiguException;
 import com.atguigu.common.result.Result;
-import com.atguigu.common.result.ResultCodeEnum;
 import com.atguigu.model.system.SysRole;
-import com.atguigu.vo.system.AssginRoleVo;
+import com.atguigu.vo.system.AssignRoleVo;
 import com.atguigu.vo.system.SysRoleQueryVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -108,8 +106,8 @@ public class SysRoleController {
 
     @ApiOperation(value = "根据用户分配角色")
     @PostMapping("/doAssign")
-    public Result doAssign(@RequestBody AssginRoleVo assginRoleVo) {
-        sysRoleService.doAssign(assginRoleVo);
+    public Result doAssign(@RequestBody AssignRoleVo assignRoleVo) {
+        sysRoleService.doAssign(assignRoleVo);
         return Result.ok();
     }
 

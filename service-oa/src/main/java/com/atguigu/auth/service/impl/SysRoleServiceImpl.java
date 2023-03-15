@@ -5,7 +5,7 @@ import com.atguigu.auth.mapper.SysUserRoleMapper;
 import com.atguigu.auth.service.SysRoleService;
 import com.atguigu.model.system.SysRole;
 import com.atguigu.model.system.SysUserRole;
-import com.atguigu.vo.system.AssginRoleVo;
+import com.atguigu.vo.system.AssignRoleVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,13 +62,13 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
     @Transactional
     @Override
-    public void doAssign(AssginRoleVo assginRoleVo) {
-        sysUserRoleMapper.delete(new LambdaQueryWrapper<SysUserRole>().eq(SysUserRole::getUserId, assginRoleVo.getUserId()));
+    public void doAssign(AssignRoleVo assignRoleVo) {
+        sysUserRoleMapper.delete(new LambdaQueryWrapper<SysUserRole>().eq(SysUserRole::getUserId, assignRoleVo.getUserId()));
 
-        for(Long roleId : assginRoleVo.getRoleIdList()) {
+        for(Long roleId : assignRoleVo.getRoleIdList()) {
             if(StringUtils.isEmpty(roleId)) continue;
             SysUserRole userRole = new SysUserRole();
-            userRole.setUserId(assginRoleVo.getUserId());
+            userRole.setUserId(assignRoleVo.getUserId());
             userRole.setRoleId(roleId);
             sysUserRoleMapper.insert(userRole);
         }
