@@ -1,7 +1,8 @@
 package com.atguigu.process.controller;
-
+import com.atguigu.model.process.Process;
 import com.atguigu.common.result.Result;
 import com.atguigu.process.service.OaProcessService;
+import com.atguigu.vo.process.ApprovalVo;
 import com.atguigu.vo.process.ProcessQueryVo;
 import com.atguigu.vo.process.ProcessVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -11,10 +12,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -49,5 +47,8 @@ public class OaProcessController {
         IPage<ProcessVo> pageModel = processService.selectPage(pageParam, processQueryVo);
         return Result.ok(pageModel);
     }
+
+
+
 }
 
